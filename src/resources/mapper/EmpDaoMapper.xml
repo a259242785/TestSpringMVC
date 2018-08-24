@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.EmpDao">
+    <insert id="register" parameterType="Emp">
+        insert into emp(empname,emppwd,empage,empdeptid) value (#{empname},#{emppwd},#{empage},#{empdeptid})
+    </insert>
+
+    <update id="updateEmp" parameterType="Emp">
+        update emp set empname=#{empname},emppwd=#{emppwd},empage=#{empage},empdeptid=#{empdeptid} where empid={empid}
+    </update>
+
+    <delete id="deleteEmp" parameterType="int">
+        delete from Emp where empid=#{empid}
+    </delete>
+
+    <select id="getById" parameterType="int" resultType="Emp">
+        select empid empid,empname empname,emppwd emppwd,empage empage,empdeptid empdeptid from emp where empid=#{empid}
+    </select>
+    
+    <select id="getAll" resultType="Emp">
+        select * from emp
+    </select>
+</mapper>
